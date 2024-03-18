@@ -136,9 +136,9 @@ export default {
     let bullet
     let buttons = []
     // Pass only vue-glide-slide
-    let slides = this.$slots.default.filter(
+    let slides = this.$slots.default ? this.$slots.default.filter(
       c => c.componentOptions && isVueGlideSlideTag(c.componentOptions.tag)
-    )
+    ) : []
 
     if (this.$slots.control && this.$slots.control.length) {
       control = <div data-glide-el="controls">{this.$slots.control}</div>
@@ -186,9 +186,9 @@ export default {
       return this.glide.index
     },
     slidesCount () {
-      return this.$slots.default.filter(
+      return this.$slots.default ? this.$slots.default.filter(
         c => c.componentOptions && isVueGlideSlideTag(c.componentOptions.tag)
-      ).length
+      ).length : 0
     }
   },
 
